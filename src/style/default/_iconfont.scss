@@ -1,0 +1,23 @@
+@font-face {
+  font-family: "iconfont";  /* project id 304810 */
+
+  src: url("http://at.alicdn.com/t/font_e5vjglwss7l23xr.eot");
+  src: url("http://at.alicdn.com/t/font_e5vjglwss7l23xr.eot?#iefix") format("embedded-opentype"),
+  url("http://at.alicdn.com/t/font_e5vjglwss7l23xr.woff") format("woff"),
+  url("http://at.alicdn.com/t/font_e5vjglwss7l23xr.ttf") format("truetype"),
+  url("http://at.alicdn.com/t/font_e5vjglwss7l23xr.svg#iconfont") format("svg");
+}
+
+[class^="icon_"] {
+  vertical-align: middle;
+  font: 24px iconfont;
+}
+
+@mixin iconAfter ($codeName) {
+  &:after {
+    vertical-align: middle;
+    font: 24px iconfont;
+
+    content: $codeName;
+  }
+}

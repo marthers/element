@@ -1,0 +1,309 @@
+<template>
+    <div class="add_ftp">
+        <el-form  label-width="100px" :label-position="labelPosition" :inline="true">
+             <el-form-item 
+                v-for="items in addFtp"
+                :key="items.prop"
+                :label="items.label"  
+                :prop="items.prop">
+                <el-select  v-if="items.select" v-model="items.model" :placeholder="items.placeholder" >
+                  <el-option 
+                      v-for="option in items.option"
+                      :key="items.prop"
+                      :label="option.label"
+                      :value="option.value"></el-option>
+                </el-select>
+                <el-input v-else :placeholder="items.placeholder"></el-input>
+            </el-form-item>
+            <el-form-item>
+                <el-button type="primary" @click="submitForm()">提交</el-button>
+                <el-button @click="resetForm('ruleForm2')">重置</el-button>
+            </el-form-item>
+        </el-form>
+            
+    </div>
+</template>
+<script>
+export default {
+    data() {
+      return {
+        labelPosition: 'top',
+         form: {
+          name: '',
+          region:''
+        },
+        addFtp:[
+            {
+              label:'企业',
+              prop:'enterprise',
+              placeholder:'请选择企业',
+              select:true,
+              model:"",
+              option:[
+                  {
+                    label:"中国建筑工业出版社",
+                    value:1
+                  },
+                  {
+                    label:"高等教育出版社有限公司",
+                    value:2
+                  },
+                  {
+                    label:"九州出版社",
+                    value:3
+                  },
+                  {
+                    label:"中国科技出版传媒股份有限公司",
+                    value:4
+                  },
+                  {
+                    label:"奥示数据",
+                    value:5
+                  },
+                  {
+                    label:"中南传媒",
+                    value:6
+                  },
+                  {
+                    label:"凤凰传媒",
+                    value:7
+                  },
+                  {
+                    label:"奥示",
+                    value:8
+                  },
+                  {
+                    label:"奥示数据中心",
+                    value:9
+                  },
+                  {
+                    label:"湖南师范大学出版社有限公司",
+                    value:10
+                  },
+                  {
+                    label:"湖南新华书店",
+                    value:11
+                  },
+                   {
+                    label:"化学工业出版社",
+                    value:12
+                  },
+                  {
+                    label:"中启CBS",
+                    value:13
+                  },
+                  {
+                    label:"中启FX",
+                    value:14
+                  },
+                  {
+                    label:"中国社会科学出版社",
+                    value:15
+                  },
+                  {
+                    label:"时代出版传媒股份有限公司",
+                    value:16
+                  },
+
+                   {
+                    label:"新华文轩出版传媒股份有限公司",
+                    value:17
+                  },
+                  {
+                    label:"中文天地出版股份有限公司",
+                    value:18
+                  },
+                  {
+                    label:"人民邮电出版社",
+                    value:19
+                  },
+                  {
+                    label:"人民交通出版社股份有限公司",
+                    value:20
+                  },
+
+                  {
+                    label:"新华联合发行有限公司",
+                    value:21
+                  },
+                  {
+                    label:"浙江省新华书店集团股份有限公司",
+                    value:22
+                  },
+                  {
+                    label:"云南新华书店集团有限公司",
+                    value:23
+                  },
+                  {
+                    label:"中国图书进出口（集团）总公司",
+                    value:24
+                  }
+              ]
+            },
+            {
+              label:'接收企业',
+              prop:'receive',
+              placeholder:'请选择企业',
+              select:true,
+              model:"",
+              option:[
+                  {
+                    label:"中国建筑工业出版社",
+                    value:1
+                  },
+                  {
+                    label:"高等教育出版社有限公司",
+                    value:2
+                  },
+                  {
+                    label:"九州出版社",
+                    value:3
+                  },
+                  {
+                    label:"中国科技出版传媒股份有限公司",
+                    value:4
+                  },
+                  {
+                    label:"奥示数据",
+                    value:5
+                  },
+                  {
+                    label:"中南传媒",
+                    value:6
+                  },
+                  {
+                    label:"凤凰传媒",
+                    value:7
+                  },
+                  {
+                    label:"奥示",
+                    value:8
+                  },
+                  {
+                    label:"奥示数据中心",
+                    value:9
+                  },
+                  {
+                    label:"湖南师范大学出版社有限公司",
+                    value:10
+                  },
+                  {
+                    label:"湖南新华书店",
+                    value:11
+                  },
+                   {
+                    label:"化学工业出版社",
+                    value:12
+                  },
+                  {
+                    label:"中启CBS",
+                    value:13
+                  },
+                  {
+                    label:"中启FX",
+                    value:14
+                  },
+                  {
+                    label:"中国社会科学出版社",
+                    value:15
+                  },
+                  {
+                    label:"时代出版传媒股份有限公司",
+                    value:16
+                  },
+
+                   {
+                    label:"新华文轩出版传媒股份有限公司",
+                    value:17
+                  },
+                  {
+                    label:"中文天地出版股份有限公司",
+                    value:18
+                  },
+                  {
+                    label:"人民邮电出版社",
+                    value:19
+                  },
+                  {
+                    label:"人民交通出版社股份有限公司",
+                    value:20
+                  },
+
+                  {
+                    label:"新华联合发行有限公司",
+                    value:21
+                  },
+                  {
+                    label:"浙江省新华书店集团股份有限公司",
+                    value:22
+                  },
+                  {
+                    label:"云南新华书店集团有限公司",
+                    value:23
+                  },
+                  {
+                    label:"中国图书进出口（集团）总公司",
+                    value:24
+                  }
+              ]
+            },
+            {
+              label:'ftp地址',
+              prop:'address',
+              placeholder:'输入ftp地址',
+              select:false
+            },
+            {
+              label:'ftp用户名',
+              prop:'name',
+              placeholder:'输入ftp用户名',
+              select:false
+            },
+            {
+              label:'ftp密码',
+              prop:'password',
+              placeholder:'输入ftp密码',
+              select:false
+            }
+        ],
+        ruleForm2: {
+          enterprise: '',
+          receive: '',
+          address: '',
+          name:'',
+          password:''
+        }
+
+      }  
+    },
+    methods:{
+      submitForm() {
+        alert("sublime")
+      },
+      resetForm(formName) {
+       document.getElementsByClassName('.el-input').value = ''
+      }
+    }
+}
+</script>
+<style scoped lang="scss">
+.add_ftp{
+    margin-top:25px;
+    .el-form{
+        display:flex;
+        justify-content:space-between;
+        flex-wrap:wrap;
+        .el-form-item{
+            width:30%;
+            .el-select{
+                width:100%;
+            }
+            &:last-child{
+                width: 100%;
+                display:flex;
+                justify-content:space-between;
+            }
+        }
+    }
+}
+</style>
